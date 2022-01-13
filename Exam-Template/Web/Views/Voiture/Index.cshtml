@@ -1,0 +1,55 @@
+﻿@model IEnumerable<GP.Domain.Entities.Voiture>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<fieldset>
+    <legend>Search</legend>
+    <form asp-controller="Voiture" asp-action="Index" method="post">
+        <label for="filtre">voiture</label>
+        <input type="text" name="filtre" />
+        <input type="submit" value="Search" />
+    </form>
+</fieldset>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NumMat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Couleur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Marque)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumMat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Couleur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Marque)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.NumMat }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.NumMat }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.NumMat })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
